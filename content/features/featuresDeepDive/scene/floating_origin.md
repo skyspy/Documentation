@@ -7,6 +7,22 @@ further-reading:
 video-overview:
 video-content:
 ---
+## About floating-origin
+by Dr Chris Thorne
+Note: this is an interim edit to provide some initial context and links. This section will be moved into a separate page that will link to this page.
+
+"Floating origin" (R) is a term describing a set of core Origin-Centric algorithms for computer graphics and simulation.
+It has been applied to translation, rotation, time and can be applied to other positional values. 
+
+The main literature can be found ![here](https://www.researchgate.net/profile/Chris-Thorne-2).
+Available authoritative implementations are on the Unity Store:
+
+ ![Continuous FLoating Origin](https://assetstore.unity.com/packages/templates/packs/continuous-floating-origin-195971) does not move the player but moves the World instead.
+
+Dynamic Resloution Spaces ![here](https://assetstore.unity.com/packages/templates/systems/dynamic-resolution-spaces-198907) extends floating origin to larger scale, requiring only single precision coordinates and math.
+
+ ![Rotation Floating Origin](https://assetstore.unity.com/packages/templates/packs/rotation-floating-origin-199192) does not rotate the player and rotates the World instead. Maintains a fixed orientation down the z-axis
+
 
 ## How floating-origin works
 
@@ -19,13 +35,15 @@ On traditional 3D rendering, objects will pass three stages until they're displa
 
 This is well known and works perfectly.
 
-Only problem is that our GPU's are still limited to 32 bits floating-point,
+Only problem is that most graphics engines and hardware are largely reliant on single precision (32 bit) floating-point numbers,
 so when we have big coordinates -- objects and/or cameras very far from the world's origin,
 for example at (10000000, 0, 10000000) -- we will notice jittering because the big numbers inside matrices will cause 32 bits floating-point imprecision on the GPU.
 
 ![Pic01](/img/how_to/floating_origin/pic01.jpg)
 
-But there is a trick which is good to mitigate that problem: floating-origin.
+The ![floating origin](https://www.researchgate.net/publication/331628217_Using_a_Floating_Origin_to_Improve_Fidelity_and_Performance_of_Large_Distributed_Virtual_Worlds) approach was developed to solve the jitter issues in a general and extensible way.
+
+The following provides a simple and effective way to implement floating origin using double-precision.
 
 The idea of floating-origin is very simple: we just keep the camera always fixed at world's origin
 (0, 0, 0) and move the objects instead.
