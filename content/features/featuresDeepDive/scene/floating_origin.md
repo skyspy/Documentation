@@ -9,6 +9,13 @@ further-reading:
 video-overview:
 video-content:
 ---
+## Overview of floating origin
+Dr Chris Thorne
+Thanks to imerso for providing this page and including references and attribution. This page offers a simple implementation that allows anyone to get started. 
+
+Floating origin began as a concept for optimising calculation fidelity and scalability in computer graphics and simulation. It applies to any positional variables and there are now implementations that keep the player/viewpoint at the origin of space/position, rotation and time. Recently, multiplayer has also been added: ![2-player space travel]([/img/how_to/floating_origin/pic01.jpg](https://youtu.be/jSsr9Gaei6s)). Such solutions include a complexity of new approaches, like stationary collisions and interaction.
+
+All of my implementations are currently single precision so that solutions independent of precision representation can be achieved. The intention is to include double precision as selective enhancements and maintain single precision, as much as possible, at the sharp end of the graphics pipeline, where frame-by-frame performance can exploit new floating origin optimisations.
 
 ## How floating-origin works
 
